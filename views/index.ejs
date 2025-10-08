@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MongoDB Web App</title>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+  <style>
+    body { margin: 2rem; }
+    table { width: 100%; }
+  </style>
+</head>
+<body>
+  <h2>🧩 Node.js + MongoDB Web App</h2>
+
+  <form action="/add" method="POST">
+    <label for="name">Item Name</label>
+    <input type="text" id="name" name="name" placeholder="Enter item..." required>
+    <button type="submit" class="button-primary">Add Item</button>
+  </form>
+
+  <h3>Stored Items</h3>
+  <% if (items.length === 0) { %>
+    <p>No items yet.</p>
+  <% } else { %>
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Created At</th></tr>
+      </thead>
+      <tbody>
+        <% items.forEach(item => { %>
+          <tr>
+            <td><%= item.name %></td>
+            <td><%= new Date(item.createdAt).toLocaleString() %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  <% } %>
+</body>
+</html>
+
